@@ -2,6 +2,8 @@
 
 A secure, privacy-focused habit tracking application built with Rust and GTK4. Track your daily habits with end-to-end encryption and an intuitive calendar interface.
 
+![swappy-20250708_152048](https://github.com/user-attachments/assets/e979ceff-b3bc-4ac5-a30a-bca8cd3dc445)
+
 ## Features
 
 ### 🔐 Security & Privacy
