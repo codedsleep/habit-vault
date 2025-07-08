@@ -41,7 +41,7 @@ A secure, privacy-focused habit tracking application built with Rust and GTK4. T
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/habit-vault.git
+git clone https://github.com/codedsleep/habit-vault.git
 cd habit-vault
 
 # Build and run
@@ -123,7 +123,7 @@ Contributions are welcome! Please feel free to submit issues, feature requests, 
 sudo apt install libgtk-4-dev libadwaita-1-dev build-essential
 
 # Clone and build
-git clone https://github.com/your-username/habit-vault.git
+git clone https://github.com/codedsleep/habit-vault.git
 cd habit-vault
 cargo build
 ```
