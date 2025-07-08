@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=HabitVault
+Comment=Track your daily habits with encryption
+Icon=rust-gtk-habits
+Exec=rust-gtk-habits
+Categories=Utility;
+Keywords=habits;tracker;productivity;daily;routine;
+StartupNotify=true
+StartupWMClass=rust-gtk-habits

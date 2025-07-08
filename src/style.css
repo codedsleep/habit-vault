@@ -1,0 +1,264 @@
+/* Calendar styling */
+.calendar-header {
+    font-weight: bold;
+    font-size: 0.9em;
+    color: @theme_fg_color;
+}
+
+.calendar-completed {
+    background-color: #2ec27e;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #26a269;
+    box-shadow: 0 2px 4px rgba(46, 194, 126, 0.3);
+}
+
+.calendar-today {
+    background-color: #3584e4;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #1c71d8;
+    box-shadow: 0 2px 4px rgba(53, 132, 228, 0.3);
+}
+
+.calendar-other-month {
+    opacity: 0.4;
+}
+
+/* Habit list styling */
+.habit-container {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 8px;
+    background-color: @theme_base_color;
+    border: 1px solid @borders;
+    transition: all 200ms ease;
+}
+
+.habit-container.expanded {
+    border-color: #3584e4;
+    border-width: 2px;
+    background-color: alpha(#3584e4, 0.1);
+}
+
+.habit-header {
+    margin-bottom: 10px;
+}
+
+/* Button styling improvements */
+button.flat {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+button.flat:hover {
+    background-color: alpha(@theme_fg_color, 0.1);
+}
+
+button.flat:active {
+    background-color: alpha(@theme_fg_color, 0.2);
+}
+
+/* Ensure proper text color in both themes */
+button.flat label {
+    color: @theme_fg_color;
+}
+
+/* Calendar button styling */
+.calendar-day-button {
+    min-width: 30px;
+    min-height: 30px;
+    padding: 2px;
+    margin: 1px;
+    border-radius: 6px;
+    background: @theme_base_color;
+    color: @theme_fg_color;
+    border: 1px solid @borders;
+    font-weight: 500;
+    transition: all 150ms ease;
+}
+
+.calendar-day-button:hover {
+    background-color: alpha(#3584e4, 0.1);
+    border-color: #3584e4;
+    transform: scale(1.05);
+}
+
+.calendar-day-button:active {
+    background-color: alpha(#3584e4, 0.2);
+    transform: scale(0.95);
+}
+
+/* Enhanced completed day styling */
+.calendar-day-button.calendar-completed {
+    background-color: #2ec27e;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #26a269;
+    box-shadow: 0 2px 6px rgba(46, 194, 126, 0.4);
+}
+
+.calendar-day-button.calendar-completed:hover {
+    background-color: #26a269;
+    box-shadow: 0 3px 8px rgba(46, 194, 126, 0.5);
+    transform: scale(1.1);
+}
+
+/* Enhanced today styling */
+.calendar-day-button.calendar-today {
+    background-color: #3584e4;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #1c71d8;
+    box-shadow: 0 2px 6px rgba(53, 132, 228, 0.4);
+}
+
+.calendar-day-button.calendar-today:hover {
+    background-color: #1c71d8;
+    box-shadow: 0 3px 8px rgba(53, 132, 228, 0.5);
+    transform: scale(1.1);
+}
+
+/* When today is also completed */
+.calendar-day-button.calendar-today.calendar-completed {
+    background: linear-gradient(135deg, #3584e4 0%, #2ec27e 100%);
+    border: 2px solid #1c71d8;
+    box-shadow: 0 2px 8px rgba(53, 132, 228, 0.4), 0 2px 8px rgba(46, 194, 126, 0.3);
+}
+
+/* Delete button styling */
+button.destructive-action {
+    background-color: #e01b24;
+    color: white;
+    border: 1px solid #c01c28;
+    border-radius: 6px;
+    font-size: 14px;
+    min-width: 40px;
+    min-height: 40px;
+    margin: 2px;
+}
+
+button.destructive-action:hover {
+    background-color: #c01c28;
+    border-color: #a51d2d;
+    box-shadow: 0 2px 4px rgba(224, 27, 36, 0.3);
+}
+
+button.destructive-action:active {
+    background-color: #a51d2d;
+    transform: scale(0.95);
+}
+
+/* Enhanced streak display styling */
+.streak-icon {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.streak-number {
+    font-size: 28px;
+    font-weight: 900;
+    color: #2ec27e;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    margin-right: 8px;
+    padding: 2px 8px;
+    background: linear-gradient(135deg, alpha(#2ec27e, 0.1) 0%, alpha(#26a269, 0.2) 100%);
+    border-radius: 12px;
+    border: 2px solid alpha(#2ec27e, 0.3);
+    min-width: 40px;
+}
+
+.streak-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: @theme_fg_color;
+    opacity: 0.8;
+    margin-top: 4px;
+}
+
+/* Special styling for high streaks */
+.streak-number.high-streak {
+    color: #e66100;
+    background: linear-gradient(135deg, alpha(#e66100, 0.1) 0%, alpha(#c64600, 0.2) 100%);
+    border-color: alpha(#e66100, 0.4);
+    font-size: 32px;
+    text-shadow: 0 2px 4px rgba(230, 97, 0, 0.3);
+}
+
+/* Habit title button styling */
+.habit-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.habit-title label {
+    margin: 0;
+    padding: 0;
+}
+
+/* Emoji button styling */
+button.emoji-button {
+    font-size: 14px;
+    min-height: 40px;
+    border-radius: 8px;
+    margin: 2px;
+    padding: 8px 12px;
+    background: @theme_base_color;
+    border: 1px solid @borders;
+    transition: all 150ms ease;
+}
+
+button.emoji-button:hover {
+    background-color: alpha(@theme_fg_color, 0.1);
+    transform: scale(1.05);
+    border-color: @theme_fg_color;
+}
+
+button.emoji-button:active {
+    transform: scale(0.98);
+}
+
+/* Compact button styling for uniform action buttons */
+button.compact-button {
+    font-size: 14px;
+    font-weight: 500;
+    min-height: 28px;
+    max-height: 28px;
+    border-radius: 4px;
+    margin: 1px;
+    padding: 2px 8px;
+    border: 1px solid @borders;
+    transition: all 150ms ease;
+}
+
+button.compact-button:hover {
+    transform: scale(1.03);
+    border-color: @theme_fg_color;
+}
+
+button.compact-button:active {
+    transform: scale(0.97);
+}
+
+/* Header icon button styling */
+button.header-icon-button {
+    font-size: 20px;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 8px;
+    margin: 2px;
+    padding: 8px;
+    border: 1px solid @borders;
+    transition: all 150ms ease;
+}
+
+button.header-icon-button:hover {
+    background-color: alpha(@theme_fg_color, 0.1);
+    transform: scale(1.05);
+    border-color: @theme_fg_color;
+}
+
+button.header-icon-button:active {
+    transform: scale(0.95);
+}

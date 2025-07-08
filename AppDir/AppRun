@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Change to the directory where the AppImage is located
+HERE="$(dirname "$(readlink -f "${0}")")"
+
+# Export necessary environment variables for GTK applications
+export PATH="${HERE}/usr/bin:${PATH}"
+export LD_LIBRARY_PATH="${HERE}/usr/lib:${LD_LIBRARY_PATH}"
+export XDG_DATA_DIRS="${HERE}/usr/share:${XDG_DATA_DIRS}"
+
+# Run the application
+exec "${HERE}/usr/bin/rust-gtk-habits" "$@"
