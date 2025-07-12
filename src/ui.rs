@@ -1,9 +1,8 @@
-use gtk4::prelude::*;
-use gtk4::{Application, ApplicationWindow, Button, Entry, Label, ListBox, ScrolledWindow, Orientation, MessageDialog, Dialog, DialogFlags, ResponseType, CssProvider, Switch, FileChooserDialog, FileChooserAction, FileFilter};
+use libadwaita::prelude::*;
+use libadwaita::{Application, ApplicationWindow, HeaderBar, Toast, ToastOverlay, StyleManager};
+use gtk4::{Button, Entry, Label, ListBox, ScrolledWindow, Orientation, MessageDialog, Dialog, DialogFlags, ResponseType, CssProvider, Switch, FileChooserDialog, FileChooserAction, FileFilter};
 use gtk4::Box as GtkBox;
 use gtk4::glib;
-use libadwaita::prelude::*;
-use libadwaita::{HeaderBar, ActionRow, Toast, ToastOverlay, StyleManager};
 use crate::habit::{Habit, HabitData};
 use crate::storage::SecureStorage;
 use crate::calendar::HabitCalendar;

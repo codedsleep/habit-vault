@@ -4,8 +4,8 @@ mod storage;
 mod ui;
 mod calendar;
 
-use gtk4::prelude::*;
-use gtk4::Application;
+use libadwaita::prelude::*;
+use libadwaita::Application;
 use ui::HabitApp;
 
 const APP_ID: &str = "com.example.rust-gtk-habits";
