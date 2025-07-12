@@ -18,6 +18,8 @@ pub struct HabitApp {
     habit_list: ListBox,
     toast_overlay: ToastOverlay,
     style_manager: StyleManager,
+    add_button: Button,
+    settings_button: Button,
 }
 
 fn get_streak_emoji(streak: u32) -> &'static str {
@@ -43,13 +45,16 @@ impl HabitApp {
         header_bar.set_title_widget(Some(&Label::new(Some("HabitVault"))));
         
         let add_button = Button::with_label("Add Habit");
+        add_button.set_sensitive(false); // Disable until authenticated
         let settings_button = Button::with_label("⚙️");
         settings_button.set_tooltip_text(Some("Settings"));
         settings_button.add_css_class("header-icon-button");
+        settings_button.set_sensitive(true); // Always enable settings access
         header_bar.pack_end(&settings_button);
         header_bar.pack_end(&add_button);
         
-        window.set_titlebar(Some(&header_bar));
+        // For AdwApplicationWindow, use set_content instead of set_titlebar
+        // The header_bar will be added to the main content structure
 
         // Load custom CSS
         let css_provider = CssProvider::new();
@@ -61,6 +66,11 @@ impl HabitApp {
         );
 
         let toast_overlay = ToastOverlay::new();
+        let content_box = GtkBox::new(Orientation::Vertical, 0);
+        
+        // Add header bar to content
+        content_box.append(&header_bar);
+        
         let main_box = GtkBox::new(Orientation::Vertical, 10);
         main_box.set_margin_top(10);
         main_box.set_margin_bottom(10);
@@ -75,8 +85,9 @@ impl HabitApp {
         scrolled_window.set_child(Some(&habit_list));
         
         main_box.append(&scrolled_window);
-        toast_overlay.set_child(Some(&main_box));
-        window.set_child(Some(&toast_overlay));
+        content_box.append(&main_box);
+        toast_overlay.set_child(Some(&content_box));
+        window.set_content(Some(&toast_overlay));
 
         let style_manager = StyleManager::default();
 
@@ -88,10 +99,19 @@ impl HabitApp {
             habit_list,
             toast_overlay,
             style_manager,
+            add_button: add_button.clone(),
+            settings_button: settings_button.clone(),
         };
 
         app.setup_events(add_button, settings_button);
         app.authenticate_user()?;
+        
+        // Fallback: enable add button after a short delay if authentication doesn't complete
+        let add_button_fallback = app.add_button.clone();
+        glib::timeout_add_seconds_local(3, move || {
+            add_button_fallback.set_sensitive(true);
+            glib::ControlFlow::Break
+        });
         
         Ok(app)
     }
@@ -156,6 +176,9 @@ impl HabitApp {
             }
         });
         
+        let add_button = self.add_button.clone();
+        let settings_button = self.settings_button.clone();
+        
         dialog.connect_response(move |dialog, response| {
             if response == ResponseType::Ok {
                 let pass = entry.text().to_string();
@@ -165,6 +188,10 @@ impl HabitApp {
                     if let Err(e) = storage.save(&habit_data.borrow(), &pass) {
                         eprintln!("Failed to save initial data: {}", e);
                     }
+                    
+                    // Enable UI after successful authentication
+                    add_button.set_sensitive(true);
+                    settings_button.set_sensitive(true);
                 }
             }
             dialog.close();
@@ -203,6 +230,9 @@ impl HabitApp {
             }
         });
         
+        let add_button = self.add_button.clone();
+        let settings_button = self.settings_button.clone();
+        
         dialog.connect_response(move |dialog, response| {
             if response == ResponseType::Ok {
                 let pass = entry.text().to_string();
@@ -212,6 +242,10 @@ impl HabitApp {
                             password.replace(Some(pass));
                             habit_data.replace(data);
                             Self::refresh_habit_list(&habit_list, &habit_data, &storage, &password);
+                            
+                            // Enable UI after successful authentication
+                            add_button.set_sensitive(true);
+                            settings_button.set_sensitive(true);
                         }
                         Err(_) => {
                             eprintln!("Failed to decrypt data. Wrong password?");
@@ -1102,6 +1136,7 @@ impl HabitApp {
     pub fn show(&self) {
         self.window.present();
     }
+    
     
     fn show_password_setup_dialog_static(
         storage: &SecureStorage,

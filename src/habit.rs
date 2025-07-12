@@ -75,6 +75,7 @@ impl HabitData {
         self.completions.iter().any(|c| c.habit_id == habit_id && c.date == date)
     }
     
+    #[allow(dead_code)]
     pub fn get_habit_by_id(&self, habit_id: &str) -> Option<&Habit> {
         self.habits.iter().find(|h| h.id == habit_id)
     }
@@ -111,6 +112,7 @@ impl HabitData {
         }
     }
     
+    #[allow(dead_code)]
     pub fn get_completions_for_habit(&self, habit_id: &str) -> Vec<&HabitCompletion> {
         self.completions.iter()
             .filter(|c| c.habit_id == habit_id)
