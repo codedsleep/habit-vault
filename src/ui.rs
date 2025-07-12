@@ -970,20 +970,36 @@ impl HabitApp {
             habit_info_box.append(&title_button);
             habit_info_box.append(&streak_box);
             
-            let complete_button = Button::with_label("✅ Today");
+            let complete_button = Button::with_label("✅");
+            complete_button.set_tooltip_text(Some("Mark as completed today"));
+            complete_button.set_has_tooltip(true);
             complete_button.add_css_class("suggested-action");
             complete_button.add_css_class("compact-button");
-            complete_button.set_size_request(75, 28);
+            complete_button.set_size_request(40, 40);
+            complete_button.set_hexpand(false);
+            complete_button.set_vexpand(false);
+            complete_button.set_halign(gtk4::Align::Center);
+            complete_button.set_valign(gtk4::Align::Center);
             
-            let edit_button = Button::with_label("✏️ Edit");
-            edit_button.set_tooltip_text(Some("Edit habit"));
-            edit_button.set_size_request(75, 28);
+            let edit_button = Button::with_label("✏️");
+            edit_button.set_tooltip_text(Some("Edit this habit's name and description"));
+            edit_button.set_has_tooltip(true);
             edit_button.add_css_class("compact-button");
+            edit_button.set_size_request(40, 40);
+            edit_button.set_hexpand(false);
+            edit_button.set_vexpand(false);
+            edit_button.set_halign(gtk4::Align::Center);
+            edit_button.set_valign(gtk4::Align::Center);
             
-            let delete_button = Button::with_label("🗑️ Delete");
-            delete_button.set_tooltip_text(Some("Delete habit"));
-            delete_button.set_size_request(75, 28);
+            let delete_button = Button::with_label("🗑️");
+            delete_button.set_tooltip_text(Some("Delete this habit permanently"));
+            delete_button.set_has_tooltip(true);
             delete_button.add_css_class("compact-button");
+            delete_button.set_size_request(40, 40);
+            delete_button.set_hexpand(false);
+            delete_button.set_vexpand(false);
+            delete_button.set_halign(gtk4::Align::Center);
+            delete_button.set_valign(gtk4::Align::Center);
             
             // Add widgets to header row
             header_row.append(&habit_info_box);

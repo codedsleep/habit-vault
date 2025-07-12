@@ -68,7 +68,7 @@ button.flat label {
 /* Calendar button styling */
 .calendar-day-button {
     min-width: 30px;
-    min-height: 30px;
+    min-height: 20px;
     padding: 2px;
     margin: 1px;
     border-radius: 6px;
@@ -134,8 +134,8 @@ button.destructive-action {
     border: 1px solid #c01c28;
     border-radius: 6px;
     font-size: 14px;
-    min-width: 40px;
-    min-height: 40px;
+    min-width: 20px;
+    min-height: 20px;
     margin: 2px;
 }
 
@@ -152,7 +152,7 @@ button.destructive-action:active {
 
 /* Enhanced streak display styling */
 .streak-icon {
-    font-size: 20px;
+    font-size: 18px;
     margin-right: 5px;
 }
 
@@ -221,14 +221,23 @@ button.emoji-button:active {
 
 /* Compact button styling for uniform action buttons */
 button.compact-button {
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 500;
-    min-height: 28px;
-    border-radius: 4px;
-    margin: 1px;
-    padding: 2px 8px;
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 6px;
+    margin: 2px;
+    padding: 6px;
     border: 1px solid @borders;
     transition: all 150ms ease;
+}
+
+/* Override suggested-action styling for compact buttons */
+button.compact-button.suggested-action {
+    min-width: 40px;
+    min-height: 40px;
+    padding: 6px;
+    border-radius: 6px;
 }
 
 button.compact-button:hover {
@@ -243,8 +252,8 @@ button.compact-button:active {
 /* Header icon button styling */
 button.header-icon-button {
     font-size: 20px;
-    min-width: 44px;
-    min-height: 44px;
+    min-width: 24px;
+    min-height: 24px;
     border-radius: 8px;
     margin: 2px;
     padding: 8px;
